@@ -22,7 +22,7 @@ namespace ConsoleApplication1
     {
        
         public Node First;
-       
+        public Node Second;
         public class Node
         {
             public int Data;
@@ -36,16 +36,54 @@ namespace ConsoleApplication1
             newNode.Data = int.Parse(Console.ReadLine());
             if (First != null)
             {
-                Node Second = First;
-                while (Second.Next != null) Second = Second.Next;
-                Second.Next = newNode;
+                if (First.Next == null)
+
+                {
+                    First.Next = newNode;
+                    Second = newNode;
+                }
+                else
+                {
+                    Second.Next = newNode;
+                    Second = newNode;
+                }
+                
             }
             else
             {
                 First = newNode;
             }
         }
-     
+        public void Add2()
+        {
+            Node newNode = new Node();
+            Console.WriteLine("Добавьте число:");
+            newNode.Data = int.Parse(Console.ReadLine());
+            if (First != null)
+            {
+                if (Second == null)
+                {
+                    First.Next = newNode;
+                    Second = newNode;
+                }
+               else
+                {
+                    Second = First.Next;
+                    First.Next = newNode;
+                    newNode.Next = Second;
+                    
+                    
+
+                     
+
+                }
+            }
+            else
+            {
+                Console.WriteLine("нет первого числа");
+            }
+        }
+
         public void printList()
         {
             Node Second = First;
@@ -59,7 +97,11 @@ namespace ConsoleApplication1
         
         public MyList()
         {
-            for (int i = 0; i < 3; i++) Add();
+            Add();
+            Add();
+            Add();
+            Add();
+            Add2();
         }
 
     }
