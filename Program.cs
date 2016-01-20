@@ -83,7 +83,23 @@ namespace ConsoleApplication1
                 Console.WriteLine("нет первого числа");
             }
         }
-
+        public void Add_one()
+        {
+            Node newNode = new Node();
+            Console.WriteLine("Добавьте число:");
+            newNode.Data = int.Parse(Console.ReadLine());
+            if (First != null)
+            {
+                Second = First ;
+                First = newNode;
+                First.Next = Second;
+               
+            }
+            else
+            {
+                First = newNode;
+            }
+        }
         public void printList()
         {
             Node Second = First;
@@ -102,6 +118,7 @@ namespace ConsoleApplication1
             Add();
             Add();
             Add2();
+            Add_one();
         }
 
     }
