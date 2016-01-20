@@ -44,6 +44,7 @@ namespace ConsoleApplication1
                 }
                 else
                 {
+
                     Second.Next = newNode;
                     Second = newNode;
                 }
@@ -90,14 +91,21 @@ namespace ConsoleApplication1
             newNode.Data = int.Parse(Console.ReadLine());
             if (First != null)
             {
-                Second = First ;
+
+                Second.Next = First;
                 First = newNode;
-                First.Next = Second;
+                First.Next = Second.Next;
+               
+                
+
+                
+                
                
             }
             else
             {
                 First = newNode;
+                Second = newNode;
             }
         }
         public void printList()
@@ -113,12 +121,11 @@ namespace ConsoleApplication1
         
         public MyList()
         {
-            Add();
-            Add();
-            Add();
-            Add();
-            Add2();
             Add_one();
+            Add_one();
+            Add_one();
+            Add();
+           
         }
 
     }
