@@ -22,7 +22,7 @@ namespace ConsoleApplication1
     {
        
         public Node First;
-        public Node Second;
+        public Node Last;
         public class Node
         {
             public int Data;
@@ -34,25 +34,17 @@ namespace ConsoleApplication1
             Node newNode = new Node();
             Console.WriteLine("Добавьте число:");
             newNode.Data = int.Parse(Console.ReadLine());
-            if (First != null)
+            if (Last != null)
             {
-                if (First.Next == null)
-
-                {
-                    First.Next = newNode;
-                    Second = newNode;
-                }
-                else
-                {
-
-                    Second.Next = newNode;
-                    Second = newNode;
-                }
+              
                 
+                Last.Next = newNode;
+                Last = newNode;
             }
             else
             {
                 First = newNode;
+                Last = First;
             }
         }
         public void Add2()
@@ -62,26 +54,43 @@ namespace ConsoleApplication1
             newNode.Data = int.Parse(Console.ReadLine());
             if (First != null)
             {
-                if (Second == null)
-                {
-                    First.Next = newNode;
-                    Second = newNode;
-                }
-               else
-                {
-                    Second = First.Next;
-                    First.Next = newNode;
-                    newNode.Next = Second;
-                    
-                    
+                if (First.Next == null)
 
-                     
+                {
+                    Last = newNode;
+                }
+                    newNode.Next = First.Next;
+                    First.Next = newNode;
 
                 }
-            }
+            
             else
             {
-                Console.WriteLine("нет первого числа");
+                First = newNode;
+                Last = First;
+            }
+        }
+        public void Add3()
+        {
+            Node newNode = new Node();
+            Console.WriteLine("Добавьте число:");
+            newNode.Data = int.Parse(Console.ReadLine());
+            if (First != null)
+            {
+                if (First.Next.Next == null)
+
+                {
+                    Last = newNode;
+                }
+                newNode.Next = First.Next.Next;
+                First.Next.Next = newNode;
+
+            }
+
+            else
+            {
+                First = newNode;
+                Last = First;
             }
         }
         public void Add_one()
@@ -92,10 +101,9 @@ namespace ConsoleApplication1
             if (First != null)
             {
 
-                Second.Next = First;
+
+                newNode.Next = First;
                 First = newNode;
-                First.Next = Second.Next;
-               
                 
 
                 
@@ -105,27 +113,55 @@ namespace ConsoleApplication1
             else
             {
                 First = newNode;
-                Second = newNode;
+                Last = newNode;
             }
         }
         public void printList()
         {
-            Node Second = First;
-            while (Second != null)
+            Node Last = First;
+            while (Last != null)
             {
-                Console.WriteLine(Second.Data);
-                Second = Second.Next;
+                Console.WriteLine(Last.Data);
+                Last = Last.Next;
             }
         }
-        
-        
+
+        public void del_first()
+        {
+            if (First != null)
+            {
+                First = First.Next;
+                if (Last != null)
+
+                {
+
+                    Last = null;
+                }
+
+            }
+            
+           
+           
+           
+           
+        }
         public MyList()
         {
-            Add_one();
-            Add_one();
-            Add_one();
+
             Add();
+            del_first();
+            //Add();
+            //Add();
            
+            //Add();
+
+           
+            
+            //Add2();
+           // Add();
+            //Add_one();
+            //Add_one();
+            //Add2();
         }
 
     }
